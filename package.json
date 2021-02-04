@@ -1,13 +1,13 @@
 {
-  "name": "koven-standard-reference",
+  "name": "kovan-standard-reference",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ thebevrishot/koven-standard-reference",
-    "create-local": "graph create --node http://localhost:8020/ thebevrishot/koven-standard-reference",
-    "remove-local": "graph remove --node http://localhost:8020/ thebevrishot/koven-standard-reference",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 thebevrishot/koven-standard-reference"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ thebevrishot/kovan-standard-reference",
+    "create-local": "graph create --node http://localhost:8020/ thebevrishot/kovan-standard-reference",
+    "remove-local": "graph remove --node http://localhost:8020/ thebevrishot/kovan-standard-reference",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 thebevrishot/kovan-standard-reference"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.19.0",
