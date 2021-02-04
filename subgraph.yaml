@@ -1,23 +1,26 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: StdSet
+    name: StdReferenceProxy
     network: kovan
     source:
       address: "0xDA7a001b254CD22e46d3eAB04d937489c93174C3"
-      abi: StdSet
+      abi: StdReferenceProxy
+      startBlock: 20000000
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.2
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - OwnershipTransferred
+        - GetReferenceData
       abis:
-        - name: StdSet
-          file: ./abis/StdSet.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
+        - name: StdReferenceProxy
+          file: ./abis/StdReferenceProxy.json
+      callHandlers:
+        - function: getReferenceData(string,string)
+          handler: handleGetReferenceData
+        - function: getReferenceDataBulk(string[],string[])
+          handler: handleGetReferenceDataBulk
       file: ./src/mapping.ts

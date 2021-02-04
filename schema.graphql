@@ -1,5 +1,5 @@
-type OwnershipTransferred @entity {
+type GetReferenceData @entity {
   id: ID!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
+  from: Bytes! # address
+  symbols: [String!]!
 }

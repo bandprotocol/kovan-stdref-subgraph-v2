@@ -1,13 +1,26 @@
-import { OwnershipTransferred as OwnershipTransferredEvent } from "../generated/StdSet/StdSet"
-import { OwnershipTransferred } from "../generated/schema"
+import { GetReferenceDataCall, GetReferenceDataBulkCall } from "../generated/StdReferenceProxy/StdReferenceProxy"
+import { GetReferenceData } from "../generated/schema"
 
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent
+export function handleGetReferenceData(
+  call: GetReferenceDataCall
 ): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
-  entity.save()
+  let id = call.transaction.hash.toHex();
+
+  let entity = new GetReferenceData(id);
+  entity.from = call.transaction.from;
+  entity.symbols = [call.inputs._quote];
+
+  entity.save();
+}
+
+export function handleGetReferenceDataBulk(
+  call: GetReferenceDataBulkCall
+): void {
+  let id = call.transaction.hash.toHex();
+
+  let entity = new GetReferenceData(id);
+  entity.from = call.transaction.from;
+  entity.symbols = call.inputs._quotes;
+
+  entity.save();
 }
